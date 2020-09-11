@@ -1,0 +1,27 @@
+{
+  "name": "check_in_job",
+  "version": "1.0.0",
+  "description": "check_in_job",
+  "main": "bot_check_in.js",
+  "scripts": {
+    "start": "nodemon ./src/bot_check_in.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "array.prototype.flat": "^1.2.3",
+    "dateformat": "^3.0.3",
+    "dateformat-light": "^1.3.3",
+    "googleapis": "^39.2.0",
+    "install": "^0.13.0",
+    "log4js": "^6.3.0",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4",
+    "package-lock.json": "^1.0.0",
+    "pm2": "^4.4.1",
+    "random-emoji": "^1.0.2",
+    "telegraf": "^3.38.0"
+  }
+}
