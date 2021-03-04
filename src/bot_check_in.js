@@ -82,31 +82,49 @@ bot.on('location', (ctx) => {
                     }).then(result => {
                         connection.query(`UPDATE users_check_in_job SET status_now='check_in' WHERE user_id='${ctx.update.message.from.id}' `, (error, res_update) => {
                             connection.query(`UPDATE users_check_in_job SET arrival_time='${new Date()}' WHERE user_id='${ctx.update.message.chat.id}' `, (error, res_update) => {
-                                if (res[0].position === "Торговая сеть №1") {
-                                    bot.telegram.sendMessage(config.rm_vika_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                        ctx.forwardMessage(config.rm_vika_id, ctx.update.message.location).then(res => {
-                                            bot.telegram.sendMessage(config.rm_vika_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                switch(res[0].position){
+                                    case "Торговая сеть №1":
+                                        bot.telegram.sendMessage(config.rm_vika_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                            ctx.forwardMessage(config.rm_vika_id, ctx.update.message.location).then(res => {
+                                                bot.telegram.sendMessage(config.rm_vika_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                            })
                                         })
-                                    })
-                                    //bot.telegram.sendMessage(config.rn_jenya_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                    //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then(res => {
-                                    //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
-                                    //})
-                                    //})
-                                    logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": прибыл(ла) на ТТ"}'`)
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                        //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then(res => {
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                        //})
+                                        //})
+                                        logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": прибыл(ла) на ТТ"}'`)
+    
+                                        break;
 
-                                } else if (res[0].position === "Торговая сеть №2") {
-                                    bot.telegram.sendMessage(config.rm_danil_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                        ctx.forwardMessage(config.rm_danil_id, ctx.update.message.location).then(res => {
-                                            bot.telegram.sendMessage(config.rm_danil_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                    case "Торговая сеть №2":
+                                        bot.telegram.sendMessage(config.rm_artur_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                            ctx.forwardMessage(config.rm_artur_id, ctx.update.message.location).then(res => {
+                                                bot.telegram.sendMessage(config.rm_artur_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                            })
                                         })
-                                    })
-                                    //bot.telegram.sendMessage(config.rn_jenya_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                    //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then(res => {
-                                    //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
-                                    //})
-                                    //})
-                                    logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": прибыл(ла) на ТТ"}'`)
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                        //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then(res => {
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                        //})
+                                        //})
+                                        logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": прибыл(ла) на ТТ"}'`)
+                                        break;
+
+                                    case "Торговая сеть №3":
+                                        bot.telegram.sendMessage(config.rm_sasha_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                            ctx.forwardMessage(config.rm_sasha_id, ctx.update.message.location).then(res => {
+                                                bot.telegram.sendMessage(config.rm_sasha_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                            })
+                                        })
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `Пришел на ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                        //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then(res => {
+                                        //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                        //})
+                                        //})
+                                        logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": прибыл(ла) на ТТ"}'`)
+                                        break;   
                                 }
                             })
                         })
@@ -128,41 +146,65 @@ bot.on('location', (ctx) => {
 
                                 connection.query(`INSERT INTO check_in_job_archive(user_id, first_name, last_name, number_phone, mount_date, one_date, stay_time) VALUES ('${ctx.message.chat.id}','${res[0].first_name}','${res[0].last_name}','${res[0].number_phone}','${moment(new Date()).format("MM.YY")}','${moment(new Date()).format("DD.MM.YY")}','${stay_time}')`,
                                     (error, res_insert) => {
-                                        if (res[0].position === "Торговая сеть №1") {
-                                            bot.telegram.sendMessage(config.rm_vika_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                                ctx.forwardMessage(config.rm_vika_id, ctx.update.message.location).then((res) => {
-                                                    bot.telegram.sendMessage(config.rm_vika_id, `Время нахождение: ${stay_time}`).then((res) => {
-                                                        bot.telegram.sendMessage(config.rm_vika_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
-                                                    })
-
-                                                })
-                                            })
-                                            //bot.telegram.sendMessage(config.rn_jenya_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                            //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then((res) => {
-                                            // bot.telegram.sendMessage(config.rn_jenya_id, `Время нахождение: ${stay_time}`).then((res) => {
-                                            //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
-                                            //})
-
-                                            // })
-                                            // })
-                                            logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": Покинул(ла) ТТ"}'`)
-                                        }
-                                        else if (res[0].position === "Торговая сеть №2") {
-                                            bot.telegram.sendMessage(config.rm_danil_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                                ctx.forwardMessage(config.rm_danil_id, ctx.update.message.location).then((res) => {
-                                                    bot.telegram.sendMessage(config.rm_danil_id, `Время нахождение: ${stay_time}`).then((res) => {
-                                                        bot.telegram.sendMessage(config.rm_danil_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                        switch(res[0].position){
+                                            case "Торговая сеть №1":
+                                                bot.telegram.sendMessage(config.rm_vika_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                    ctx.forwardMessage(config.rm_vika_id, ctx.update.message.location).then((res) => {
+                                                        bot.telegram.sendMessage(config.rm_vika_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                            bot.telegram.sendMessage(config.rm_vika_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                        })
                                                     })
                                                 })
-                                            })
-                                            //bot.telegram.sendMessage(config.rn_jenya_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
-                                            //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then((res) => {
-                                            // bot.telegram.sendMessage(config.rn_jenya_id, `Время нахождение: ${stay_time}`).then((res) => {
-                                            // bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
-                                            //})
-                                            //})
-                                            //})
-                                            logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": Покинул(ла) ТТ"}'`)
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then((res) => {
+                                                // bot.telegram.sendMessage(config.rn_jenya_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                //})
+    
+                                                // })
+                                                // })
+                                                logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": Покинул(ла) ТТ"}'`)
+                                                break;
+
+                                            case "Торговая сеть №2":
+                                                bot.telegram.sendMessage(config.rm_artur_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                    ctx.forwardMessage(config.rm_artur_id, ctx.update.message.location).then((res) => {
+                                                        bot.telegram.sendMessage(config.rm_artur_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                            bot.telegram.sendMessage(config.rm_artur_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                        })
+    
+                                                    })
+                                                })
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then((res) => {
+                                                // bot.telegram.sendMessage(config.rn_jenya_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                //})
+    
+                                                // })
+                                                // })
+                                                logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": Покинул(ла) ТТ"}'`)
+                                                break;
+
+                                            case "Торговая сеть №3":
+                                                bot.telegram.sendMessage(config.rm_sasha_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                    ctx.forwardMessage(config.rm_sasha_id, ctx.update.message.location).then((res) => {
+                                                        bot.telegram.sendMessage(config.rm_sasha_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                            bot.telegram.sendMessage(config.rm_sasha_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                        })
+    
+                                                    })
+                                                })
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `Покинул ТТ 👇👇👇👇👇👇👇: ${new Date().toLocaleString()}`).then((res) => {
+                                                //ctx.forwardMessage(config.rn_jenya_id, ctx.update.message.location).then((res) => {
+                                                // bot.telegram.sendMessage(config.rn_jenya_id, `Время нахождение: ${stay_time}`).then((res) => {
+                                                //bot.telegram.sendMessage(config.rn_jenya_id, `☝️☝️☝️☝️☝️☝️☝️☝️☝️☝️`)
+                                                //})
+    
+                                                // })
+                                                // })
+                                                logger.info(`'${new Date().toLocaleString() + "__" + res[0].last_name + ": Покинул(ла) ТТ"}'`)
+                                                break;
                                         }
                                     })
                             })
